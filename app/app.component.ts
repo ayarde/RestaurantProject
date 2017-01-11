@@ -1,6 +1,7 @@
 import {Component} from "angular2/core";
 import {ROUTER_DIRECTIVES, RouteConfig, Router} from "angular2/router";
 import {RestaurantsListComponent} from "./components/restaurants-list.component";
+import {RestaurantsDetailComponent} from "./components/restaurant-detail.component";
 
 
 @Component({
@@ -9,6 +10,13 @@ import {RestaurantsListComponent} from "./components/restaurants-list.component"
   directives: [RestaurantsListComponent,ROUTER_DIRECTIVES]
 
 })
+
+@RouteConfig([
+  {path: "/", name:"Home", component:RestaurantsListComponent,
+   useAsDefault: true},
+  {path: "/restaurant/:id", name:"Restaurant",
+   component:RestaurantsDetailComponent}
+])
 
 export class AppComponent{
   private title:string = "Restaurants";

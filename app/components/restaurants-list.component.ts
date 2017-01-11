@@ -6,15 +6,16 @@ import {Restaurant} from "../model/restaurant";
 @Component({
   selector:"restaurants-list",
   templateUrl: "app/view/restaurants-list.html",
+  directives: [ROUTER_DIRECTIVES],
   providers: [RestaurantService]
 
 })
 
-export class RestaurantsListComponent{
-  private title:string = "Restaurants List";
+export class RestaurantsListComponent implements OnInit{
+  private title:string = "Restaurants List:";
   private restaurants: Restaurant[];
   private status:string;
-  private errorMessage:string;
+  private errorMessage;
 
   constructor(private restaurantService:RestaurantService){
 
@@ -26,21 +27,25 @@ export class RestaurantsListComponent{
   }
 
   getRestaurants(){
-    this.restaurantService.getRestaurants().subscribe(result =>{
-                                            this.restaurants = result.data;
-                                            this.status = result.status;
+    let restaurants_box = <HTMLElement> document
+                          .querySelector("#restaurants-list .loading");
+    restaurants_box.style.visibility = "visible";
+    this.restaurantService.getRestaurants().subscribe(result => {
+                                        this.restaurants = result.data;
+                                        this.status = result.status;
 
-                                            if(this.status !== "SUCCESS"){
-                                              alert("Error in Server");
-                                            }
-                                          },
-                                          error =>{
-                                            this.errorMessage = <any>error;
-                                            if(this.errorMessage !== null){
-                                              console.log(this.errorMessage);
-                                              alert("Error in the request");
-                                            }
-                                          }
-                                        );
+                                        if(this.status !== "success"){
+                                          alert("Error in Server");
+                                        }
+                                        restaurants_box.style.display="none";
+                                      },
+                                      error => {
+                                        this.errorMessage = <any>error;
+                                        if(this.errorMessage !== null){
+                                          console.log(this.errorMessage);
+                                          alert("Error in the request");
+                                        }
+                                      }
+                                    );
   }
 }

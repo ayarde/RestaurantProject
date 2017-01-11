@@ -1,4 +1,4 @@
-System.register(["angular2/core", "angular2/router", "./components/restaurants-list.component"], function(exports_1, context_1) {
+System.register(["angular2/core", "angular2/router", "./components/restaurants-list.component", "./components/restaurant-detail.component"], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(["angular2/core", "angular2/router", "./components/restaurants-l
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, restaurants_list_component_1;
+    var core_1, router_1, restaurants_list_component_1, restaurant_detail_component_1;
     var AppComponent;
     return {
         setters:[
@@ -22,6 +22,9 @@ System.register(["angular2/core", "angular2/router", "./components/restaurants-l
             },
             function (restaurants_list_component_1_1) {
                 restaurants_list_component_1 = restaurants_list_component_1_1;
+            },
+            function (restaurant_detail_component_1_1) {
+                restaurant_detail_component_1 = restaurant_detail_component_1_1;
             }],
         execute: function() {
             AppComponent = (function () {
@@ -33,7 +36,13 @@ System.register(["angular2/core", "angular2/router", "./components/restaurants-l
                         selector: "my-app",
                         templateUrl: "app/view/home.html",
                         directives: [restaurants_list_component_1.RestaurantsListComponent, router_1.ROUTER_DIRECTIVES]
-                    }), 
+                    }),
+                    router_1.RouteConfig([
+                        { path: "/", name: "Home", component: restaurants_list_component_1.RestaurantsListComponent,
+                            useAsDefault: true },
+                        { path: "/restaurant/:id", name: "Restaurant",
+                            component: restaurant_detail_component_1.RestaurantsDetailComponent }
+                    ]), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);
                 return AppComponent;

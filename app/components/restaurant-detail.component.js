@@ -11,7 +11,7 @@ System.register(["angular2/core", "angular2/router", "../services/restaurant.ser
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1, router_1, restaurant_service_1;
-    var RestaurantsListComponent;
+    var RestaurantsDetailComponent;
     return {
         setters:[
             function (core_1_1) {
@@ -24,27 +24,24 @@ System.register(["angular2/core", "angular2/router", "../services/restaurant.ser
                 restaurant_service_1 = restaurant_service_1_1;
             }],
         execute: function() {
-            RestaurantsListComponent = (function () {
-                function RestaurantsListComponent(restaurantService) {
+            RestaurantsDetailComponent = (function () {
+                function RestaurantsDetailComponent(restaurantService, routeParams) {
                     this.restaurantService = restaurantService;
-                    this.title = "Restaurants List:";
+                    this.routeParams = routeParams;
                 }
-                RestaurantsListComponent.prototype.ngOnInit = function () {
-                    this.getRestaurants();
-                    console.log("restaurant-list component loaded...");
+                RestaurantsDetailComponent.prototype.ngOnInit = function () {
+                    this.param = this.routeParams.get("id");
+                    this.getRestaurant();
                 };
-                RestaurantsListComponent.prototype.getRestaurants = function () {
+                RestaurantsDetailComponent.prototype.getRestaurant = function () {
                     var _this = this;
-                    var restaurants_box = document
-                        .querySelector("#restaurants-list .loading");
-                    restaurants_box.style.visibility = "visible";
-                    this.restaurantService.getRestaurants().subscribe(function (result) {
-                        _this.restaurants = result.data;
-                        _this.status = result.status;
+                    var id = this.routeParams.get("id");
+                    this.restaurantService.getRestaurant(id).subscribe(function (response) {
+                        _this.restaurant = response.data;
+                        _this.status = response.status;
                         if (_this.status !== "success") {
                             alert("Error in Server");
                         }
-                        restaurants_box.style.display = "none";
                     }, function (error) {
                         _this.errorMessage = error;
                         if (_this.errorMessage !== null) {
@@ -53,19 +50,18 @@ System.register(["angular2/core", "angular2/router", "../services/restaurant.ser
                         }
                     });
                 };
-                RestaurantsListComponent = __decorate([
+                RestaurantsDetailComponent = __decorate([
                     core_1.Component({
-                        selector: "restaurants-list",
-                        templateUrl: "app/view/restaurants-list.html",
-                        directives: [router_1.ROUTER_DIRECTIVES],
+                        selector: "restaurants-detail",
+                        templateUrl: "app/view/restaurant-detail.html",
                         providers: [restaurant_service_1.RestaurantService]
                     }), 
-                    __metadata('design:paramtypes', [restaurant_service_1.RestaurantService])
-                ], RestaurantsListComponent);
-                return RestaurantsListComponent;
+                    __metadata('design:paramtypes', [restaurant_service_1.RestaurantService, router_1.RouteParams])
+                ], RestaurantsDetailComponent);
+                return RestaurantsDetailComponent;
             }());
-            exports_1("RestaurantsListComponent", RestaurantsListComponent);
+            exports_1("RestaurantsDetailComponent", RestaurantsDetailComponent);
         }
     }
 });
-//# sourceMappingURL=restaurants-list.component.js.map
+//# sourceMappingURL=restaurant-detail.component.js.map
