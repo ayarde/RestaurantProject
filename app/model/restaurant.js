@@ -6,10 +6,10 @@ System.register([], function(exports_1, context_1) {
         setters:[],
         execute: function() {
             Restaurant = (function () {
-                function Restaurant(id, name, addres, description, imagen, price) {
+                function Restaurant(id, name, address, description, imagen, price) {
                     this.id = id;
                     this.name = name;
-                    this.addres = addres;
+                    this.address = address;
                     this.description = description;
                     this.imagen = imagen;
                     this.price = price;

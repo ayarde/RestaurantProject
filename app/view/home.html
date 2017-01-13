@@ -1,8 +1,17 @@
 <header id="header">
+  <a [routerLink]="['Home']">
   <img src="../../assets/images/angular.jpg" id="logo"/>
+  </a>
   <h1>{{title}}</h1>
   <div class="clearfix"></div>
 </header>
+<nav id="nav">
+  <ul>
+    <li><a [routerLink]="['Home']">Start</a></li>
+    <li><a [routerLink]="['AddRestaurant']">Add restaurant</a></li>
+    <li><a [routerLink]="['Home']">Where eat I today?</a></li>
+  </ul>
+</nav>
 <section class="main">
   <router-outlet></router-outlet>
   <div class="clearfix"></div>
