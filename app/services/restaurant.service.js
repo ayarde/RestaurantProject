@@ -38,7 +38,11 @@ System.register(["angular2/core", "angular2/http", "rxjs/add/operator/map"], fun
                 };
                 RestaurantService.prototype.addRestaurant = function (restaurant) {
                     var json = JSON.stringify(restaurant);
-                    var params = "json=" + json;
+                    var newJson = json.replace('"name"', '"nombre"');
+                    newJson = newJson.replace('"address"', '"direccion"');
+                    newJson = newJson.replace('"description"', '"descripcion"');
+                    newJson = newJson.replace('"price"', '"precio"');
+                    var params = "json=" + newJson;
                     var headers = new http_1.Headers({ "Content-Type": "application/x-www-form-urlencoded" });
                     return this.http
                         .post("http://localhost/slim/restaurantes-api.php/restaurantes", params, { headers: headers }).map(function (res) { return res.json(); });

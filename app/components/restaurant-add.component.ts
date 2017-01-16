@@ -41,7 +41,7 @@ export class RestaurantAddComponent implements OnInit{
   }
 
   ngOnInit(){
-    this.restaurant = new Restaurant(0,
+    this.restaurant = new Restaurant(5,
                                      this.routeParams.get("name"),
                                      this.routeParams.get("address"),
                                      this.routeParams.get("description"),

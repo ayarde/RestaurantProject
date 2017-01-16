@@ -22,7 +22,13 @@ export class RestaurantService{
 
   addRestaurant(restaurant: Restaurant){
     let json = JSON.stringify(restaurant);
-    let params = "json=" + json;
+
+    let newJson = json.replace('"name"','"nombre"');
+    newJson = newJson.replace('"address"','"direccion"');
+    newJson = newJson.replace('"description"','"descripcion"');
+    newJson = newJson.replace('"price"','"precio"');
+
+    let params = "json=" + newJson;
     let headers = new Headers(
                             {"Content-Type":"application/x-www-form-urlencoded"}
                           );

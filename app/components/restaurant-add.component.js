@@ -50,7 +50,7 @@ System.register(["angular2/core", "angular2/router", "../services/restaurant.ser
                     this.router.navigate(["Home"]);
                 };
                 RestaurantAddComponent.prototype.ngOnInit = function () {
-                    this.restaurant = new restaurant_1.Restaurant(0, this.routeParams.get("name"), this.routeParams.get("address"), this.routeParams.get("description"), "null", "small");
+                    this.restaurant = new restaurant_1.Restaurant(5, this.routeParams.get("name"), this.routeParams.get("address"), this.routeParams.get("description"), "null", "small");
                 };
                 RestaurantAddComponent.prototype.callPrice = function (value) {
                     this.restaurant.price = value;
