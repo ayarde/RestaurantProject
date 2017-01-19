@@ -10,8 +10,10 @@
       <h4>{{restaurant.nombre}}</h4>
       <p>{{restaurant.direccion}}</p>
       <p>
-        <a [routerLink]="['Restaurant',{id: restaurant.id}]" class="btn btn-ver">See</a>
-        <a href="" class="btn btn-edit">Edit</a>
+        <a [routerLink]="['Restaurant',{id: restaurant.id}]"
+         class="btn btn-ver">See</a>
+        <a [routerLink]="['EditRestaurant',{id: restaurant.id}]"
+         class="btn btn-edit">Edit</a>
         <a href="" class="btn btn-delete">Delete</a>
       </p>
     </div>

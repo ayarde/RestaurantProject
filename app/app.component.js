@@ -1,4 +1,4 @@
-System.register(["angular2/core", "angular2/router", "./components/restaurants-list.component", "./components/restaurant-detail.component", "./components/restaurant-add.component"], function(exports_1, context_1) {
+System.register(["angular2/core", "angular2/router", "./components/restaurants-list.component", "./components/restaurant-detail.component", "./components/restaurant-add.component", "./components/restaurant-edit.component"], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(["angular2/core", "angular2/router", "./components/restaurants-l
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, restaurants_list_component_1, restaurant_detail_component_1, restaurant_add_component_1;
+    var core_1, router_1, restaurants_list_component_1, restaurant_detail_component_1, restaurant_add_component_1, restaurant_edit_component_1;
     var AppComponent;
     return {
         setters:[
@@ -28,6 +28,9 @@ System.register(["angular2/core", "angular2/router", "./components/restaurants-l
             },
             function (restaurant_add_component_1_1) {
                 restaurant_add_component_1 = restaurant_add_component_1_1;
+            },
+            function (restaurant_edit_component_1_1) {
+                restaurant_edit_component_1 = restaurant_edit_component_1_1;
             }],
         execute: function() {
             AppComponent = (function () {
@@ -49,6 +52,9 @@ System.register(["angular2/core", "angular2/router", "./components/restaurants-l
                         },
                         { path: "/add-restaurant/", name: "AddRestaurant",
                             component: restaurant_add_component_1.RestaurantAddComponent
+                        },
+                        { path: "/edit-restaurant/:id", name: "EditRestaurant",
+                            component: restaurant_edit_component_1.RestaurantEditComponent
                         }
                     ]), 
                     __metadata('design:paramtypes', [])

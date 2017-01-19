@@ -36,4 +36,21 @@ export class RestaurantService{
     .post("http://localhost/slim/restaurantes-api.php/restaurantes",
      params, {headers: headers}).map(res => res.json());
   }
+
+  editRestaurant(id:string, restaurant: Restaurant){
+    let json = JSON.stringify(restaurant);
+
+    let newJson = json.replace('"name"','"nombre"');
+    newJson = newJson.replace('"address"','"direccion"');
+    newJson = newJson.replace('"description"','"descripcion"');
+    newJson = newJson.replace('"price"','"precio"');
+
+    let params = "json=" + newJson;
+    let headers = new Headers(
+                            {"Content-Type":"application/x-www-form-urlencoded"}
+                          );
+    return this.http
+    .post("http://localhost/slim/restaurantes-api.php/update-restaurante/" + id,
+     params, {headers: headers}).map(res => res.json());
+  }
 }
