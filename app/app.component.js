@@ -55,6 +55,9 @@ System.register(["angular2/core", "angular2/router", "./components/restaurants-l
                         },
                         { path: "/edit-restaurant/:id", name: "EditRestaurant",
                             component: restaurant_edit_component_1.RestaurantEditComponent
+                        },
+                        { path: "/where-eat-today/:random", name: "WhereEatToday",
+                            component: restaurant_detail_component_1.RestaurantsDetailComponent
                         }
                     ]), 
                     __metadata('design:paramtypes', [])

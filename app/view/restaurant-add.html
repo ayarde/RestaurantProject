@@ -33,5 +33,10 @@
                                       'height'?'selected': null">Height</option>
   </select>
 </p>
+
+<label>Image:</label>
+<p>
+  <input type="file" placeholder="Upload image..." (change)="fileChangeEvent($event)">
+</p>
 <input type="submit" value="{{title}}" [disabled]="!restaurantForm.form.valid"/>
 </form>

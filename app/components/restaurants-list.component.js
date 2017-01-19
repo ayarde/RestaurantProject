@@ -53,6 +53,28 @@ System.register(["angular2/core", "angular2/router", "../services/restaurant.ser
                         }
                     });
                 };
+                RestaurantsListComponent.prototype.onConfirmDelete = function (id) {
+                    this.confirm = id;
+                };
+                RestaurantsListComponent.prototype.onCancelDelete = function (id) {
+                    this.confirm = null;
+                };
+                RestaurantsListComponent.prototype.onDeleteRestaurant = function (id) {
+                    var _this = this;
+                    this.restaurantService.deleteRestaurant(id).subscribe(function (result) {
+                        _this.status = result.status;
+                        if (_this.status !== "success") {
+                            alert("Error in Server");
+                        }
+                        _this.getRestaurants();
+                    }, function (error) {
+                        _this.errorMessage = error;
+                        if (_this.errorMessage !== null) {
+                            console.log(_this.errorMessage);
+                            alert("Error in the request");
+                        }
+                    });
+                };
                 RestaurantsListComponent = __decorate([
                     core_1.Component({
                         selector: "restaurants-list",

@@ -8,8 +8,9 @@
 <nav id="nav">
   <ul>
     <li><a [routerLink]="['Home']">Start</a></li>
-    <li><a [routerLink]="['AddRestaurant']">Add restaurant</a></li>
-    <li><a [routerLink]="['Home']">Where eat I today?</a></li>
+    <li><a [routerLink]="['AddRestaurant']">Add restaurant</a></li>    
+    <li><a [routerLink]="['WhereEatToday',{random: 'true'}]">
+         Where eat I today?</a></li>
   </ul>
 </nav>
 <section class="main">

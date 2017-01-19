@@ -16,6 +16,7 @@ export class RestaurantsListComponent implements OnInit{
   private restaurants: Restaurant[];
   private status:string;
   private errorMessage;
+  private confirm;
 
   constructor(private restaurantService:RestaurantService){
 
@@ -47,5 +48,32 @@ export class RestaurantsListComponent implements OnInit{
                                         }
                                       }
                                     );
+  }
+
+  onConfirmDelete(id){
+    this.confirm = id;
+  }
+
+  onCancelDelete(id){
+    this.confirm = null;
+  }
+
+  onDeleteRestaurant(id:string){
+    this.restaurantService.deleteRestaurant(id).subscribe(
+                          result => {
+                            this.status = result.status;
+                            if(this.status !== "success"){
+                              alert("Error in Server");
+                            }
+                            this.getRestaurants();
+                          },
+                          error => {
+                            this.errorMessage = <any>error;
+                            if(this.errorMessage !== null){
+                              console.log(this.errorMessage);
+                              alert("Error in the request");
+                            }
+                          }
+                        );
   }
 }

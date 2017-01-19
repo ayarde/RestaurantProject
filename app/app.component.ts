@@ -24,6 +24,9 @@ import {RestaurantEditComponent} from "./components/restaurant-edit.component";
   },
   {path: "/edit-restaurant/:id", name:"EditRestaurant",
     component:RestaurantEditComponent
+  },
+  {path: "/where-eat-today/:random", name:"WhereEatToday",
+    component:RestaurantsDetailComponent
   }
 ])
 

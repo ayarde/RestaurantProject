@@ -14,10 +14,16 @@ export class RestaurantService{
             .map(res => res.json());
   }
 
-  getRestaurant(id:string){
-    return this.http
-            .get("http://localhost/slim/restaurantes-api.php/restaurante/" + id)
-            .map(res => res.json());
+  getRestaurant(id:string, random = null){
+    if(random == null) {
+      return this.http
+          .get("http://localhost/slim/restaurantes-api.php/restaurante/" + id)
+          .map(res => res.json());
+    } else{
+      return this.http
+          .get("http://localhost/slim/restaurantes-api.php/random-restaurante")
+          .map(res => res.json());
+    }
   }
 
   addRestaurant(restaurant: Restaurant){
@@ -52,5 +58,11 @@ export class RestaurantService{
     return this.http
     .post("http://localhost/slim/restaurantes-api.php/update-restaurante/" + id,
      params, {headers: headers}).map(res => res.json());
+  }
+
+  deleteRestaurant(id:string){
+    return this.http
+    .get("http://localhost/slim/restaurantes-api.php/delete-restaurante/" + id)
+    .map(res => res.json());
   }
 }

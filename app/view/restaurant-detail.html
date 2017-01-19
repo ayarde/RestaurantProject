@@ -1,12 +1,16 @@
 <div *ngIf="restaurant" class="restaurants_box">
-  <h1>Restaurant: {{restaurant.nombre}}</h1>
-  <p class="price">
-    <span [ngSwitch]="restaurant.precio">
-      <span *ngSwitchWhen="'small'">Between $75 and $85</span>
-      <span *ngSwitchWhen="'normal'">Between $100 and $200</span>
-      <span *ngSwitchWhen="'height'">Between $300 and $500</span>
-    </span>
-  </p>
-  <p class="adress">{{restaurant.direccion}}</p>
-  <p class="description">{{restaurant.descripcion}}</p>
+  <img class="image-restaurant-detail" src="http://localhost/slim/uploads/{{restaurant.imagen}}"
+  *ngIf="restaurant.imagen && restaurant.imagen !== 'null'">
+  <div class="data-rest">
+    <h1>Restaurant: {{restaurant.nombre}}</h1>
+    <p class="price">
+      <span [ngSwitch]="restaurant.precio">
+        <span *ngSwitchWhen="'small'">Between $75 and $85</span>
+        <span *ngSwitchWhen="'normal'">Between $100 and $200</span>
+        <span *ngSwitchWhen="'height'">Between $300 and $500</span>
+      </span>
+    </p>
+    <p class="adress">{{restaurant.direccion}}</p>
+    <p class="description">{{restaurant.descripcion}}</p>
+  </div>
 </div>

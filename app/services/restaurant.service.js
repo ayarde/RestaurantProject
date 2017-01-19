@@ -31,10 +31,18 @@ System.register(["angular2/core", "angular2/http", "rxjs/add/operator/map"], fun
                         .get("http://localhost/slim/restaurantes-api.php/restaurantes")
                         .map(function (res) { return res.json(); });
                 };
-                RestaurantService.prototype.getRestaurant = function (id) {
-                    return this.http
-                        .get("http://localhost/slim/restaurantes-api.php/restaurante/" + id)
-                        .map(function (res) { return res.json(); });
+                RestaurantService.prototype.getRestaurant = function (id, random) {
+                    if (random === void 0) { random = null; }
+                    if (random == null) {
+                        return this.http
+                            .get("http://localhost/slim/restaurantes-api.php/restaurante/" + id)
+                            .map(function (res) { return res.json(); });
+                    }
+                    else {
+                        return this.http
+                            .get("http://localhost/slim/restaurantes-api.php/random-restaurante")
+                            .map(function (res) { return res.json(); });
+                    }
                 };
                 RestaurantService.prototype.addRestaurant = function (restaurant) {
                     var json = JSON.stringify(restaurant);
@@ -57,6 +65,11 @@ System.register(["angular2/core", "angular2/http", "rxjs/add/operator/map"], fun
                     var headers = new http_1.Headers({ "Content-Type": "application/x-www-form-urlencoded" });
                     return this.http
                         .post("http://localhost/slim/restaurantes-api.php/update-restaurante/" + id, params, { headers: headers }).map(function (res) { return res.json(); });
+                };
+                RestaurantService.prototype.deleteRestaurant = function (id) {
+                    return this.http
+                        .get("http://localhost/slim/restaurantes-api.php/delete-restaurante/" + id)
+                        .map(function (res) { return res.json(); });
                 };
                 RestaurantService = __decorate([
                     core_1.Injectable(), 
